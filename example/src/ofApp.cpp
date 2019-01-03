@@ -26,6 +26,12 @@ void ofApp::draw(){
     ofDrawCircle(50+(ofGetWidth()-100)*tapMachine->crochet.normalized, 300, 10);
 
 
+    ofSetColor(255, 255, 0);
+    ofDrawCircle(50+(ofGetWidth()-100)*tapMachine->twoBar.normalized, 350, 10);
+    ofSetColor(0, 255, 255);
+    ofDrawCircle(50+(ofGetWidth()-100)*tapMachine->fourBar.normalized, 400, 10);
+
+
     string msg="===============[ ofxTapMachine example ]===============\n";
     msg += "press space bar more than 3 times to get average BPM.\n";
     msg += "FPS        : " + ofToString(ofGetFrameRate(), 2) + "\n";

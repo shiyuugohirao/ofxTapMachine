@@ -23,7 +23,7 @@ private:
     };
 
 protected:
-    void updateBeatInfo(int time, BeatInfo &info, int beats){
+    void updateBeatInfo(int time, BeatInfo &info, float beats){
         float millis = avgBarMillis / beats;
         info.normalized = fmod(time,millis) / (float)millis;
         if(info.normalized < info.lastNormalized){
@@ -35,6 +35,7 @@ protected:
 
 public:
     BeatInfo bar,minim,crochet,quaver;
+    BeatInfo twoBar,fourBar;
 
     ofxTapMachine():BPM(100),tapCount(0),avgBarMillis(1000),bStart(false){
         ofAddListener(ofEvents().update, this, &ofxTapMachine::update);
@@ -55,6 +56,8 @@ public:
             tapCount = 0;
         }
 
+        updateBeatInfo(time, fourBar, 1/4.f);
+        updateBeatInfo(time, twoBar, 1/2.f);
         updateBeatInfo(time, bar, 1);
         updateBeatInfo(time, minim, 2);
         updateBeatInfo(time, crochet, 4);
